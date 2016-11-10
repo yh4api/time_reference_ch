@@ -1,8 +1,28 @@
 #-*- coding:utf-8 -*-
 """
 Created on Mon Jul 25 14:13:04 2016
+Last Modified on Thu Nov 10 10:45:28 2016
+This file is used to normalize chinese date expression to YYYY-MM-DD format
 
-@author: yhlin
+Usage and examples:
+>>> python timeRefCHM.py
+>>> 明年6月我要去英国看温布顿
+00-04 2017-6-XX
+>>> 今年10月到明年1月间应该不会有台风了！
+START 2016-10-01 END 2017-01-31
+>>> 陈书安每天早上10点到晚上6点都在打扰大家。
+005-010: 早上10点
+011-015: 晚上6点
+START 2016-01-01 END 2016-12-31
+>>> 美国联邦调查局长科米告诉国会，他没有改变他在今年7月20号得出的结论。
+22-29 2016-7-20
+>>> 我要去韩国玩5天
+
+>>> 总统大选将在2个月后举行。
+START 2017-01-09
+>>> exit
+
+@author: yenhsi.lin
 """
 import re
 from datetime import date
@@ -505,7 +525,6 @@ class temporalDetect:
 				print "START %s"%s
 			elif s == None and e!= None:
 				print "END %s"%e
-			
 			
 if __name__=="__main__":
 	query = raw_input()
